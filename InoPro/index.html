@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bank Card</title>
+    <meta name="viewport" content="initial-scale=1">
+
+</head>
+
+<body>
+    <style>
+        .demo-container {
+            width: 100%;
+            max-width: 350px;
+            margin: 50px auto;
+        }
+
+        form {
+            margin: 30px;
+        }
+
+        input {
+            width: 200px;
+            margin: 10px auto;
+            display: block;
+        }
+        .bg {
+          border: 1px solid rgba(0,0,0,0);
+          background-color:#CEFFFC;
+        }
+        .submit {
+          background-color: lightblue;
+          padding: 2.8px;
+          margin-top: 25px;
+        }
+        .clear {
+          background-color: lightblue;
+          padding: 2.8px;
+        }
+    </style>
+  <div class="bg">
+    <div class="demo-container">
+        <div class="card-wrapper"></div>
+
+        <div class="form-container active">
+            <form action="">
+                <input placeholder="Card number" type="tel" name="number">
+                <input placeholder="Full name" type="text" name="name">
+                <input placeholder="MM/YY" type="tel" name="expiry">
+                <input placeholder="CVC" type="number" name="cvc">
+                <input placeholder="Shop Name" type="text" name="shopName" id="shopName">
+                <input class="submit" type="button" value="Submit" onclick="paymentSuccess()">
+                <input class="clear" type="reset" value="Clear" onclick="erase()">
+            </form>
+            <p id="output"></p>
+        </div>
+    </div>
+  </div>
+
+    <script>
+
+      /*function generateCVV() {
+        var number;
+        do {
+          number = Math.floor(Math.random() * 999);
+        } while (number < 100);
+        document.getElementById("output").innerHTML = "Your new generated CVV is <b>" +
+                                                       number + "</b><br>"+
+                                                       "Please use this for your next transaction.";
+      }*/
+
+      function paymentSuccess() {
+        var name = document.getElementById("shopName").value;
+        document.getElementById("output").innerHTML = "Your payment to <b>" +
+                                                       name + "</b> is successful!<br>"+
+                                                       "Thank you!";
+      }
+
+      function erase(){
+        document.getElementById("output").innerHTML = "";
+      }
+
+    </script>
+
+    <script src="card.js"></script>
+    <script>
+        var c = new Card({
+            form: document.querySelector('form'),
+            container: '.card-wrapper'
+        });
+    </script>
+</body>
+
+</html>
